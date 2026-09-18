@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Longevity Engineer — simple food and habit help, in WhatsApp</title>
+<meta name="description" content="Proactive meal ideas and habit nudges, in WhatsApp. No app to download. Not medical advice.">
+<meta name="theme-color" content="#7CC0EA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Longevity Engineer">
+<meta property="og:description" content="Proactive meal ideas and habit nudges, in WhatsApp. No app to download. Not medical advice.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2318813C'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23F5E24A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --sky-1:#7CC0EA;
+    --sky-2:#BFE3F4;
+    --sky-3:#EDF7F5;
+    --ink:#12181B;
+    --hill-back:#8ED17E;
+    --hill-front:#4FAE55;
+    --mint:#DFF3E3;
+    --yellow:#F5E24A;
+    --icon-green:#18813C;
+    --blossom-pink:#F4A6C6;
+    --measure:36rem;
+    --hillH: clamp(120px, 20vw, 210px);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:'Schibsted Grotesk',ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+  /* ── hero shell ─────────────────────────── */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    background:linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 48%, var(--sky-3) 80%, var(--sky-3) 100%);
+  }
+
+  /* ── header ─────────────────────────────── */
+  .bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:1.25rem clamp(1.25rem, 5vw, 3rem);
+    position:relative;
+    z-index:4;
+  }
+  .wordmark{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    font-weight:700;
+    font-size:1.0625rem;
+    letter-spacing:-.01em;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .wordmark svg{width:22px;height:22px;flex:none}
+  .head-actions{display:flex;align-items:center;gap:clamp(.75rem,3vw,1.375rem)}
+  .login{
+    font-size:.9375rem;
+    font-weight:500;
+    text-decoration:none;
+    color:var(--ink);
+    opacity:.72;
+  }
+  .login:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+
+  /* ── shared pill buttons ────────────────── */
+  .cta-header,.cta-inline,.float-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    font-weight:600;
+    font-size:.9375rem;
+    letter-spacing:-.005em;
+    text-decoration:none;
+    color:var(--ink);
+    border-radius:999px;
+    padding:.5rem .9rem .5rem .5rem;
+    white-space:nowrap;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .cta-header{background:var(--mint)}
+  .cta-inline{background:var(--mint);align-self:flex-start}
+  .float-pill{background:var(--yellow)}
+  .cta-header:hover,.cta-inline:hover,.float-pill:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(18,24,27,.16)}
+  .cta-header:active,.cta-inline:active,.float-pill:active{transform:translateY(0);box-shadow:none}
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--icon-green);
+    flex:none;
+  }
+  .badge svg{width:14px;height:14px;fill:#fff}
+
+  /* ── illustrated stage ──────────────────── */
+  .stage{
+    position:relative;
+    flex:1 1 auto;
+    min-height:460px;
+    overflow:hidden;
+  }
+
+  .clouds{position:absolute;inset:0;z-index:1;pointer-events:none}
+  .cloud{position:absolute;width:130px;height:48px;background:#fff;border-radius:60px;opacity:.92}
+  .cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+  .cloud::before{width:64px;height:64px;top:-30px;left:16px}
+  .cloud::after{width:48px;height:48px;top:-22px;right:12px}
+  .c1{top:9%;left:4%;transform:scale(1.15)}
+  .c2{top:23%;left:63%;transform:scale(.85);opacity:.85}
+  .c3{top:6%;left:80%;transform:scale(.6);opacity:.8}
+  .c4{top:42%;left:15%;transform:scale(.5);opacity:.6}
+  .c5{top:34%;left:70%;transform:scale(1.1);opacity:.5}
+
+  .content{
+    position:absolute;
+    left:clamp(1.25rem, 6vw, 3rem);
+    right:1.25rem;
+    bottom:calc(var(--hillH) + clamp(30px, 7vw, 72px));
+    max-width:var(--measure);
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:1.125rem;
+  }
+  h1{
+    margin:0;
+    font-size:clamp(2.5rem, 9vw, 5.25rem);
+    font-weight:800;
+    line-height:.98;
+    letter-spacing:-.03em;
+    text-wrap:balance;
+  }
+  .trust{
+    margin:0;
+    font-size:clamp(.9375rem, 3.2vw, 1.0625rem);
+    max-width:34ch;
+    opacity:.78;
+  }
+
+  .hill{position:absolute;left:0;right:0;bottom:0;width:100%;height:var(--hillH);z-index:2;display:block}
+
+  .foot-links{
+    position:absolute;
+    left:clamp(1.25rem, 6vw, 3rem);
+    right:clamp(1.25rem, 6vw, 3rem);
+    bottom:clamp(14px, 3vw, 26px);
+    z-index:3;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:.5rem clamp(.75rem, 2.5vw, 1.5rem);
+  }
+  .foot-links a{font-size:.8125rem;font-weight:500;text-decoration:none;color:var(--ink);opacity:.75}
+  .foot-links a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+
+  /* ── floating desktop CTA ───────────────── */
+  .float-pill{
+    display:none;
+    position:fixed;
+    right:clamp(1rem, 4vw, 2.5rem);
+    top:54%;
+    transform:translateY(-50%);
+    z-index:20;
+    padding:.75rem 1.25rem .75rem .625rem;
+    font-size:1rem;
+    box-shadow:0 10px 30px rgba(18,24,27,.18);
+  }
+
+  @media (min-width:861px){
+    .float-pill{display:inline-flex}
+    .cta-inline{display:none}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition-duration:.001ms !important}
+  }
+</style>
+</head>
+
+<body>
+
+<!--
+  ─────────────────────────────────────────────────────────────
+  SETUP: put your WhatsApp Business digits in place of the
+  placeholder below (country code first, no plus sign, no
+  spaces — e.g. 919876543210).
+
+  Easiest way: Find & Replace the word  NUMBER  across this
+  whole file — it is only ever used as that placeholder.
+  Or edit just the waDigits line in the script at the bottom.
+  ─────────────────────────────────────────────────────────────
+-->
+
+<div class="hero" id="top">
+
+  <header class="bar">
+    <a class="wordmark" href="#top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-5 0-9 4-9 9 0 4.5 3.5 8 8 8.9.6-5.7 3-8.7 8.6-9.6C19.4 6.7 16.2 3 12 3Z" fill="currentColor"/></svg>
+      Longevity Engineer
+    </a>
+    <div class="head-actions">
+      <a class="login" data-wa href="https://wa.me/NUMBER?text=Hi%20%E2%80%94%20I%20want%20simple%20food%20%2B%20habit%20help%20(not%20medical%20advice).%20Let%E2%80%99s%20set%20me%20up.">Login</a>
+      <a class="cta-header" data-wa href="https://wa.me/NUMBER?text=Hi%20%E2%80%94%20I%20want%20simple%20food%20%2B%20habit%20help%20(not%20medical%20advice).%20Let%E2%80%99s%20set%20me%20up.">
+        <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span>
+        Get started for free
+      </a>
+    </div>
+  </header>
+
+  <div class="stage">
+    <div class="clouds" aria-hidden="true">
+      <span class="cloud c1"></span>
+      <span class="cloud c2"></span>
+      <span class="cloud c3"></span>
+      <span class="cloud c4"></span>
+      <span class="cloud c5"></span>
+    </div>
+
+    <div class="content">
+      <h1>Execute your diet plan.<br>Effortlessly</h1>
+      <p class="trust">No app to download. Not medical advice.</p>
+      <a class="cta-inline" data-wa href="https://wa.me/NUMBER?text=Hi%20%E2%80%94%20I%20want%20simple%20food%20%2B%20habit%20help%20(not%20medical%20advice).%20Let%E2%80%99s%20set%20me%20up.">
+        <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <svg class="hill" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="var(--hill-back)" d="M0,150 C160,115 320,100 500,120 C680,140 780,150 960,122 C1120,97 1280,92 1440,112 L1440,240 L0,240 Z"/>
+      <path fill="var(--hill-front)" d="M0,192 C180,165 340,208 520,190 C700,173 860,215 1040,196 C1200,180 1320,184 1440,170 L1440,240 L0,240 Z"/>
+      <g fill="#fff" opacity=".9">
+        <circle cx="120" cy="197" r="4"/>
+        <circle cx="260" cy="206" r="3"/>
+        <circle cx="400" cy="191" r="4"/>
+        <circle cx="560" cy="203" r="3"/>
+        <circle cx="700" cy="193" r="4"/>
+        <circle cx="860" cy="207" r="3"/>
+        <circle cx="1020" cy="191" r="4"/>
+        <circle cx="1180" cy="203" r="3"/>
+        <circle cx="1340" cy="193" r="4"/>
+      </g>
+      <g fill="var(--blossom-pink)" opacity=".9">
+        <circle cx="190" cy="201" r="3"/>
+        <circle cx="480" cy="199" r="3"/>
+        <circle cx="790" cy="201" r="3"/>
+        <circle cx="1100" cy="199" r="3"/>
+      </g>
+    </svg>
+
+    <nav class="foot-links">
+      <a href="#">About</a>
+      <a href="#">Love</a>
+      <a href="#">Careers</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </div>
+
+  <a class="float-pill" data-wa href="https://wa.me/NUMBER?text=Hi%20%E2%80%94%20I%20want%20simple%20food%20%2B%20habit%20help%20(not%20medical%20advice).%20Let%E2%80%99s%20set%20me%20up.">
+    <span class="badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></span>
+    Chat on WhatsApp
+  </a>
+
+</div>
+
+<script>
+  // Your WhatsApp Business digits: country code first, no plus sign, no spaces.
+  var waDigits = "NUMBER";
+
+  var WA_TEXT = "Hi%20%E2%80%94%20I%20want%20simple%20food%20%2B%20habit%20help%20(not%20medical%20advice).%20Let%E2%80%99s%20set%20me%20up.";
+  var WA_URL = "https://wa.me/" + waDigits + "?text=" + WA_TEXT;
+
+  document.querySelectorAll("[data-wa]").forEach(function (el) {
+    el.setAttribute("href", WA_URL);
+    el.setAttribute("rel", "noopener");
+  });
+</script>
+
+</body>
+</html>
