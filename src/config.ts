@@ -11,7 +11,6 @@ export const CTA_LABEL = 'Join the beta on WhatsApp';
 // encodeURIComponent leaves ' alone; wa.me links read better with it encoded.
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_TEXT).replace(/'/g, '%27')}`;
 
-// TODO: confirm the real inbox before launch.
 export const CONTACT_EMAIL = 'hello@longevity-engineer.com';
 
 export const FOUNDER = {
