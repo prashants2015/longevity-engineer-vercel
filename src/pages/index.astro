@@ -1,0 +1,275 @@
+---
+import Base from '../layouts/Base.astro';
+import WaButton from '../components/WaButton.astro';
+import { FOUNDER, FAQ } from '../config';
+
+const works = ['Apple Watch', 'FreeStyle Libre', 'Google Calendar', 'Swiggy', 'InBody reports'];
+
+// `extra` chips are hidden on mobile.
+const asks = [
+  { text: "Here's the menu, what do I get?" },
+  { text: 'Photo of my thali, how much should I take?', extra: true },
+  { text: 'Skipped breakfast, fix my day' },
+  { text: 'Had 2 rotis and dal', extra: true },
+  { text: 'How much protein is left today?' },
+  { text: "How did yesterday's dinner do for my glucose?", extra: true },
+  { text: 'Gym at 7 tomorrow', extra: true },
+  { text: "I'm Jain, no onion or garlic" },
+];
+
+const steps = [
+  { n: '01', title: 'Say hi', body: 'A five-minute chat sets your goal and food rules. Connect your watch, glucose sensor or calendar whenever you like.' },
+  { n: '02', title: 'Ask, or get pinged', body: "Ask when you're hungry, send a menu photo, or let it message you before your lunch gap." },
+  { n: '03', title: 'One clear pick', body: "One dish, with the numbers and the reason. Swap it if it's not right. It asks before ordering anything." },
+];
+
+const compare = [
+  { row: 'Knows what you ate today', bot: 'Only if you tell it, every time', chart: 'No', us: 'Yes, from photos, voice and picks' },
+  { row: 'Reads your watch and glucose', bot: 'No', chart: 'No', us: 'Yes, automatically' },
+  { row: 'Messages you at the right time', bot: 'No, you have to ask', chart: 'No', us: 'Yes, timed to your calendar' },
+  { row: 'Picks from the menu in front of you', bot: 'Sometimes', chart: 'No', us: 'Yes, one dish with numbers' },
+  { row: 'Orders it for you', bot: 'No', chart: 'No', us: 'Yes, on Swiggy, after your yes' },
+];
+
+const dishes = [
+  { dish: 'Paneer tikka bowl', times: 3, rise: '+18' },
+  { dish: 'Dal chawal', times: 4, rise: '+24' },
+  { dish: 'Rajma chawal', times: 2, rise: '+38' },
+];
+
+const day = [
+  { when: '7:35 AM', time: '07:35', body: 'A short brief after you wake: sleep, yesterday, and what matters today.' },
+  { when: '12:35 PM', time: '12:35', body: 'One lunch pick, sent before your meeting gap.' },
+  { when: '7:50 PM', time: '19:50', body: 'Workout synced from your watch. Dinner can be a little bigger.' },
+  { when: 'Sunday', body: 'Your week in six lines, and one thing to try next.' },
+];
+---
+<Base
+  title="Longevity Engineer: stop guessing what to eat"
+  description="Your health engineer on WhatsApp. It knows your targets, watch, glucose and day, and picks and orders your next meal."
+>
+  <!-- 2. Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="label">Your health engineer, on WhatsApp</p>
+        <h1 class="h1" id="hero-title">Stop guessing what to eat.</h1>
+        <p class="lede">Text it like a friend. It knows your targets, your watch, your glucose and your day, picks your next meal, and orders it on Swiggy when you say yes.</p>
+        <div class="hero__cta">
+          <WaButton id="hero-cta" />
+          <p class="micro">Free during the beta · No app · Takes 5 minutes to set up</p>
+        </div>
+        <div class="founder-line">
+          <img src={FOUNDER.photo} alt={`${FOUNDER.name}, founder`} width="44" height="44" />
+          <div>
+            <blockquote>“{FOUNDER.heroLine}”</blockquote>
+            <cite>— {FOUNDER.name}, {FOUNDER.role}</cite>
+          </div>
+        </div>
+      </div>
+
+      <figure class="chat" aria-label="Example WhatsApp conversation">
+        <div class="chat__head">
+          <span class="chat__title">Longevity Engineer · online</span>
+          <span class="chat__tag">Example</span>
+        </div>
+        <ol class="chat__body">
+          <li class="bubble bubble--user">Calls till 1. What do I order?</li>
+          <li class="bubble bubble--reply">Dal chawal with a paneer side from your usual place, arriving 1:05. About 520 kcal and 34 g protein, which closes today's gap. Reply order.</li>
+          <li class="bubble bubble--user">order</li>
+          <li class="order-card">
+            <span class="label">Order placed after your yes</span>
+            <strong>Dal chawal + paneer side</strong> · ₹320 · Arriving 1:05 pm · logged to today
+          </li>
+          <li class="divider">3 hours later</li>
+          <li class="bubble bubble--reply">Lunch: glucose from 96, rose 24 at 40 min, back by 1 h 40 m. Added to your food library.</li>
+        </ol>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3–4. Works with + example asks -->
+  <div class="container">
+    <div class="works">
+      <p class="label">Works with</p>
+      <ul>
+        {works.map((w) => <li>{w}</li>)}
+      </ul>
+    </div>
+  </div>
+  <section class="asks" aria-label="Things you can ask">
+    <div class="container">
+      <ul class="chips">
+        {asks.map((a) => <li class:list={['chip', a.extra && 'chip--extra']}>{a.text}</li>)}
+      </ul>
+      <p>Ask in English or Hinglish, by text, photo or voice note.</p>
+    </div>
+  </section>
+
+  <!-- 5. How it works -->
+  <section class="section light" id="how" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section__head">
+        <p class="label">How it works</p>
+        <h2 class="h2" id="how-title">Text. It decides. You eat.</h2>
+      </div>
+      <ol class="cards">
+        {steps.map((s) => (
+          <li class="step">
+            <span class="step__num" aria-hidden="true">{s.n}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6. Why not ChatGPT -->
+  <section class="section" id="why" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section__head">
+        <p class="label">Why not just ask ChatGPT?</p>
+        <h2 class="h2" id="why-title">Generic advice doesn't know your day.</h2>
+      </div>
+
+      <div class="table-wrap desktop-only">
+        <table class="compare">
+          <thead>
+            <tr>
+              <td></td>
+              <th scope="col">A chatbot</th>
+              <th scope="col">A diet chart</th>
+              <th scope="col" class="us">Longevity Engineer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {compare.map((c) => (
+              <tr>
+                <th scope="row">{c.row}</th>
+                <td>{c.bot}</td>
+                <td>{c.chart}</td>
+                <td class="us">{c.us}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mobile-only">
+        <ul class="yes-list">
+          {compare.map((c) => <li>{c.row}<span>Yes</span></li>)}
+        </ul>
+        <p class="compare-note">A chatbot or a diet chart does none of these on its own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Glucose -->
+  <section class="section light" aria-labelledby="glucose-title">
+    <div class="container glucose">
+      <div class="section__head">
+        <p class="label">With a glucose sensor</p>
+        <h2 class="h2" id="glucose-title">See what food does to you.</h2>
+        <p class="lede">Every meal is matched to your glucose. Eat a dish twice and you see your typical response, not someone else's.</p>
+      </div>
+      <div>
+      <div class="dish-wrap">
+      <table class="dish-table" aria-describedby="dish-note">
+        <thead>
+          <tr>
+            <th scope="col">Your dish</th>
+            <th scope="col" class="num">Times</th>
+            <th scope="col" class="num">Typical rise</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dishes.map((d) => (
+            <tr>
+              <th scope="row">{d.dish}</th>
+              <td class="num">{d.times}</td>
+              <td class="num"><span class="rise">{d.rise}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+      <p class="dish-note" id="dish-note">Example. Numbers only, never verdicts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. A day -->
+  <section class="section" aria-labelledby="day-title">
+    <div class="container">
+      <div class="section__head">
+        <p class="label">It comes to you</p>
+        <h2 class="h2" id="day-title">A day with your engineer.</h2>
+      </div>
+      <ol class="day">
+        {day.map((d) => (
+          <li>
+            {d.time ? <time datetime={d.time}>{d.when}</time> : <span class="when">{d.when}</span>}
+            <p>{d.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 9. Founder -->
+  <section class="section" aria-label="From the founder">
+    <div class="container">
+      <figure class="founder">
+        <img src={FOUNDER.photo} alt={`${FOUNDER.name}, founder of Longevity Engineer`} width="160" height="160" loading="lazy" />
+        <div>
+          <blockquote><p>“{FOUNDER.quote}”</p></blockquote>
+          <figcaption><strong>{FOUNDER.name}, {FOUNDER.role}</strong> · {FOUNDER.credentials} · {FOUNDER.city}</figcaption>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__head">
+        <p class="label">FAQ</p>
+        <h2 class="h2" id="faq-title">Before you ask.</h2>
+      </div>
+      <div class="faq">
+        {FAQ.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. Closing band -->
+  <section class="section band" aria-labelledby="band-title">
+    <div class="container">
+      <h2 class="h2" id="band-title">Take the thinking off your plate.</h2>
+      <p>Your next meal, decided. Invite-only beta, free while it lasts.</p>
+      <WaButton variant="dark" />
+    </div>
+  </section>
+
+  <div class="sticky-cta" id="sticky-cta" slot="after">
+    <WaButton />
+  </div>
+  <script is:inline slot="after">
+    (function () {
+      var hero = document.getElementById('hero-cta');
+      var bar = document.getElementById('sticky-cta');
+      if (!hero || !bar || !('IntersectionObserver' in window)) return;
+      new IntersectionObserver(function (entries) {
+        var e = entries[0];
+        var show = !e.isIntersecting && e.boundingClientRect.top < 0;
+        bar.classList.toggle('is-visible', show);
+      }).observe(hero);
+    })();
+  </script>
+</Base>
