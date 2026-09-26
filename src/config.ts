@@ -26,30 +26,30 @@ export const FOUNDER = {
     'I spent years scaling delivery at Zomato and knew what I should eat, yet still guessed at every meal. So I built the engineer I wanted: one that knows my day and just makes the call. I use it for every meal.',
 };
 
-// TODO: replace these drafts with the answers from the frozen canvas board.
+// Final copy from the frozen canvas board.
 export const FAQ: { q: string; a: string }[] = [
   {
     q: 'Is it a doctor or dietitian?',
-    a: "No. It's a food and habit assistant, not medical advice, and it doesn't diagnose or treat anything. If you have a condition, follow your doctor; you can tell it their guidance and it will work within it.",
+    a: "No. It's food and habit guidance for adults, not medical advice. It never suggests crash diets and won't advise on medicines.",
   },
   {
     q: 'Does it order without asking?',
-    a: 'Never. It suggests one dish with the numbers and waits. Nothing is ordered on Swiggy until you reply yes.',
+    a: "Never. It shows the exact cart, price and address, and only places it when you reply yes.",
   },
   {
     q: 'Do I need a watch or a glucose sensor?',
-    a: "No. It works from what you tell it by text, photo or voice note. Connecting an Apple Watch, FreeStyle Libre or Google Calendar makes its picks sharper, whenever you're ready.",
+    a: "No. It works with just WhatsApp. Each device you connect makes the picks sharper.",
   },
   {
     q: 'Vegetarian, Jain, eggetarian?',
-    a: 'Yes. Tell it your food rules once, including no onion or garlic, and every pick follows them.',
+    a: "Tell it once. Your food rules and allergies are checked before every pick.",
   },
   {
     q: 'What happens to my data?',
-    a: "It's used only to make your picks. We don't sell it. Ask on WhatsApp and we'll delete it.",
+    a: "It's used only to help you, never sold, and there are no ads. Disconnect anything any time; full data deletion is coming very soon.",
   },
   {
     q: 'Why WhatsApp?',
-    a: "It's already on your phone. No app to install, nothing new to learn, and it handles text, photos and voice notes.",
+    a: "It's where you already are. Nothing to install, nothing to remember to open.",
   },
 ];
