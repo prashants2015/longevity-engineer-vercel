@@ -1,7 +1,12 @@
-modules = ["web"]
+modules = ["nodejs-22", "web"]
 
 [nix]
 channel = "stable-25_05"
 
 [agent]
 expertMode = true
+
+[[ports]]
+localPort = 4321
+externalPort = 80
+exposeLocalhost = true

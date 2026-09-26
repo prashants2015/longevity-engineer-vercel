@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import WaButton from '../components/WaButton.astro';
+import { CONTACT_EMAIL } from '../config';
+---
+<Base title="Contact · Longevity Engineer" description="Message Longevity Engineer on WhatsApp or by email.">
+  <section class="page">
+    <div class="container">
+      <p class="label">Contact</p>
+      <h1 class="h2">Talk to us.</h1>
+      <p>The fastest way is WhatsApp. For anything else, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+      <WaButton />
+    </div>
+  </section>
+</Base>
