@@ -1,7 +1,9 @@
 ---
 import WaButton from './WaButton.astro';
-const isHome = /^\/(index(\.html)?)?$/.test(Astro.url.pathname);
-const home = isHome ? '' : '/';
+import { SITE_TEMPLATE } from '../config';
+// Section links live on the classic template, at / or /classic depending on which is live.
+const isHome = /^\/(index|classic)?(\.html)?$/.test(Astro.url.pathname);
+const home = isHome ? '' : SITE_TEMPLATE === 'classic' ? '/' : '/classic';
 ---
 <header class="site-header">
   <div class="container site-header__inner">
