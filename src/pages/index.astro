@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import WaButton from '../components/WaButton.astro';
-import { FOUNDER, FAQ } from '../config';
+import { FOUNDER, FAQ, PHONES, WEARABLES, WEARABLE_MESSAGE_TEXT, BETA_PICKS_TEXT, WHATSAPP_NUMBER } from '../config';
 
 const works = ['Apple Watch', 'FreeStyle Libre', 'Google Calendar', 'Swiggy', 'InBody reports'];
 
@@ -56,6 +56,22 @@ const day = [
         <h1 class="h1" id="hero-title">Stop guessing what to eat.</h1>
         <p class="lede">Text it like a friend. It knows your targets, your watch, your glucose and your day, picks your next meal, and orders it on Swiggy when you say yes.</p>
         <div class="hero__cta">
+          <div class="picks" id="beta-picks" data-number={WHATSAPP_NUMBER} data-text={BETA_PICKS_TEXT}>
+            <label class="pick">
+              <span class="pick__label">Your phone</span>
+              <select name="phone">
+                <option value="">Optional</option>
+                {PHONES.map((p) => <option>{p}</option>)}
+              </select>
+            </label>
+            <label class="pick">
+              <span class="pick__label">Your watch or ring</span>
+              <select name="wearable">
+                <option value="">Optional</option>
+                {WEARABLES.map((w) => <option value={WEARABLE_MESSAGE_TEXT[w] ?? w}>{w}</option>)}
+              </select>
+            </label>
+          </div>
           <WaButton id="hero-cta" />
           <p class="micro">Free during the beta · No app · Takes 5 minutes to set up</p>
         </div>
@@ -270,6 +286,26 @@ const day = [
         var show = !e.isIntersecting && e.boundingClientRect.top < 0;
         bar.classList.toggle('is-visible', show);
       }).observe(hero);
+    })();
+
+    // Beta picks: rewrite every WhatsApp button's prefilled text. Nothing picked = original link.
+    (function () {
+      var picks = document.getElementById('beta-picks');
+      if (!picks) return;
+      var buttons = document.querySelectorAll('a[href^="https://wa.me/"]');
+      var original = [];
+      buttons.forEach(function (a) { original.push(a.href); });
+      function update() {
+        var parts = [];
+        picks.querySelectorAll('select').forEach(function (s) { if (s.value) parts.push(s.value); });
+        var href = parts.length
+          ? 'https://wa.me/' + picks.dataset.number + '?text=' +
+            encodeURIComponent(picks.dataset.text + ' ' + parts.join(', ')).replace(/'/g, '%27')
+          : null;
+        buttons.forEach(function (a, i) { a.href = href || original[i]; });
+      }
+      picks.addEventListener('change', update);
+      update();
     })();
   </script>
 </Base>

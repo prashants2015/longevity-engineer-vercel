@@ -11,6 +11,14 @@ export const CTA_LABEL = 'Join the beta on WhatsApp';
 // encodeURIComponent leaves ' alone; wa.me links read better with it encoded.
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_TEXT).replace(/'/g, '%27')}`;
 
+// Optional dropdowns above the hero button. If either is picked, the prefilled
+// text becomes "Join the beta. {phone}, {wearable}" with only the picked parts.
+export const BETA_PICKS_TEXT = 'Join the beta.';
+export const PHONES = ['iPhone', 'Android'];
+export const WEARABLES = ['Apple Watch', 'Garmin', 'Whoop', 'Oura', 'Fitbit', 'Other', 'None'];
+// Message wording for options whose dropdown label doesn't read well in the text.
+export const WEARABLE_MESSAGE_TEXT: Record<string, string> = { None: 'no watch or ring' };
+
 export const CONTACT_EMAIL = 'hello@longevity-engineer.com';
 
 export const FOUNDER = {
