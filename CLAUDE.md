@@ -3,7 +3,7 @@
 - Astro, static output (`output: 'static'`). Astro is the only dependency; ask before adding another.
 - Needs Node 22.12+ (`.replit` uses `nodejs-22`). `npm install`, then `npm run dev` (localhost:4321), `npm run build` (writes `dist/`), `npm run preview`.
 - Vercel deploys `main` to production from GitHub; every branch gets a preview URL. `vercel.json` pins framework Astro, `npm run build`, output `dist`.
-- Git fetch/push don't work from the agent here; the user pushes through Replit's Git panel.
+- Git fetch/push work from the agent after `gh auth setup-git`; open PRs with `gh pr create`. The user can also push through Replit's Git panel.
 - All config (WhatsApp number and prefilled text, CTA label, contact email, founder quote, FAQ) lives in `src/config.ts`. Don't hard-code these in pages.
 - Layout: `src/layouts/Base.astro` (head, SEO/OG tags, fonts, analytics), components in `src/components/`, pages in `src/pages/`, styles in `src/styles/global.css`. Sitemap and robots.txt are hand-written endpoints in `src/pages/`; add new pages to `sitemap.xml.ts`.
 - Design is frozen: don't restyle. Barlow Condensed (headlines), Barlow (body), JetBrains Mono (labels); colours are the CSS variables at the top of `global.css`.
