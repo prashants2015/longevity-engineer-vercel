@@ -1,7 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import WaButton from '../components/WaButton.astro';
-import { FOUNDER, FAQ, PHONES, WEARABLES, WEARABLE_MESSAGE_TEXT, BETA_PICKS_TEXT, WHATSAPP_NUMBER } from '../config';
+import { SITE_TEMPLATE, FOUNDER, FAQ, PHONES, WEARABLES, WEARABLE_MESSAGE_TEXT, BETA_PICKS_TEXT, WHATSAPP_NUMBER } from '../config';
+
+// Served at /classic, and at / too when SITE_TEMPLATE is 'classic' (see astro.config.mjs).
+const noindex = SITE_TEMPLATE !== 'classic';
 
 const works = ['Apple Watch', 'FreeStyle Libre', 'Google Calendar', 'Swiggy', 'InBody reports'];
 
@@ -45,6 +48,8 @@ const day = [
 ];
 ---
 <Base
+  canonicalPath="/"
+  noindex={noindex}
   title="Longevity Engineer: stop guessing what to eat"
   description="Your health engineer on WhatsApp. It knows your targets, watch, glucose and day, and picks and orders your next meal."
 >
