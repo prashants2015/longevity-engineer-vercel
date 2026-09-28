@@ -372,3 +372,36 @@ h1, h2, h3 { margin: 0; }
 .page .container { display: grid; gap: 24px; justify-items: start; }
 .page p { color: var(--text-2); max-width: 60ch; }
 .page a:not(.btn) { color: var(--accent); }
+
+/* ── prose (policy pages rendered from docs/*.md) ── */
+.prose { width: 100%; max-width: 72ch; color: var(--text-2); }
+.prose > * + * { margin-top: 16px; }
+.prose h2 {
+  margin-top: 48px;
+  font-family: var(--font-head);
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.prose h3 { margin-top: 32px; font-size: 19px; color: var(--text); }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose ul, .prose ol { margin-block: 0; padding-left: 1.25em; }
+.prose li + li { margin-top: 6px; }
+.prose table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.prose th, .prose td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+.prose th {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--card);
+}

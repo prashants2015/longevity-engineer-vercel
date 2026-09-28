@@ -1,13 +1,19 @@
 ---
+import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { CONTACT_EMAIL } from '../config';
+
+const doc = (await getEntry('legal', 'privacy'))!;
+const { Content } = await render(doc);
+const title = doc.data.title ?? 'Privacy policy';
 ---
-<Base title="Privacy · Longevity Engineer" description="Privacy policy for Longevity Engineer, being finalised.">
+<Base title={`${title} · Longevity Engineer`} description="How Longevity Engineer collects, uses and protects your personal data.">
   <section class="page">
     <div class="container">
       <p class="label">Legal</p>
-      <h1 class="h2">Privacy</h1>
-      <p>Being finalised. Questions: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+      <h1 class="h2">{title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
     </div>
   </section>
 </Base>
