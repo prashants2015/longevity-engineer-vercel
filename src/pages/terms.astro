@@ -1,13 +1,19 @@
 ---
+import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { CONTACT_EMAIL } from '../config';
+
+const doc = (await getEntry('legal', 'terms'))!;
+const { Content } = await render(doc);
+const title = doc.data.title ?? 'Terms of use';
 ---
-<Base title="Terms · Longevity Engineer" description="Terms of use for Longevity Engineer, being finalised.">
+<Base title={`${title} · Longevity Engineer`} description="Terms for using Longevity Engineer during its private beta.">
   <section class="page">
     <div class="container">
       <p class="label">Legal</p>
-      <h1 class="h2">Terms</h1>
-      <p>Being finalised. Questions: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+      <h1 class="h2">{title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
     </div>
   </section>
 </Base>
