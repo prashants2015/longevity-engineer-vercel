@@ -37,7 +37,7 @@ export const FOUNDER = {
   name: 'Prashant Singh',
   role: 'founder',
   credentials: 'IIT Delhi, IIM Calcutta',
-  city: 'Mumbai',
+  city: 'Gurgaon',
   // Replace public/founder.jpg with a real square photo (at least 192×192).
   photo: '/founder.jpg',
   heroLine: 'I built it because I was tired of guessing. I use it for every meal.',
