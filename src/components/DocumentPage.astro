@@ -9,9 +9,10 @@ interface Props {
 }
 
 const { title, description, label, canonicalPath } = Astro.props;
+const metadataTitle = `${title} · Longevity Engineer`;
 ---
 
-<Base {title} {description} {canonicalPath}>
+<Base title={metadataTitle} {description} {canonicalPath}>
   <section class="page">
     <div class="container">
       <p class="label">{label}</p>
