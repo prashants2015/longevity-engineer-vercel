@@ -1,19 +1,13 @@
 ---
-import { getEntry, render } from 'astro:content';
-import Base from '../layouts/Base.astro';
-
-const doc = (await getEntry('legal', 'privacy'))!;
-const { Content } = await render(doc);
-const title = doc.data.title ?? 'Privacy policy';
+import { Content as PrivacyContent } from '../content/privacy.md';
+import DocumentPage from '../components/DocumentPage.astro';
 ---
-<Base title={`${title} · Longevity Engineer`} description="How Longevity Engineer collects, uses and protects your personal data.">
-  <section class="page">
-    <div class="container">
-      <p class="label">Legal</p>
-      <h1 class="h2">{title}</h1>
-      <div class="prose">
-        <Content />
-      </div>
-    </div>
-  </section>
-</Base>
+
+<DocumentPage
+  title="Privacy Policy"
+  description="Privacy Policy for Longevity Engineer, including how we collect, use, share and protect personal data."
+  label="Legal"
+  canonicalPath="/privacy"
+>
+  <PrivacyContent />
+</DocumentPage>

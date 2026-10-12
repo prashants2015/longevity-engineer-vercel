@@ -53,8 +53,10 @@ const emailText = CONTACT_EMAIL.replace('@', ' [at] ').replace(/\./g, ' [dot] ')
     <footer class="colophon">
       <p>© 2026 Longevity Engineer</p>
       <nav aria-label="Footer">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
+        <a href="/about">About Us</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/contact">Contact Us</a>
       </nav>
       <p>{emailText}</p>
     </footer>
@@ -122,7 +124,7 @@ const emailText = CONTACT_EMAIL.replace('@', ' [at] ').replace(/\./g, ' [dot] ')
     color: var(--ink-2);
   }
   .colophon p { margin: 0; }
-  .colophon nav { display: flex; gap: 20px; }
+  .colophon nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
   .colophon a { color: var(--ink-2); text-underline-offset: 3px; }
   .colophon a:hover { color: var(--ink); }
   .sr-only {
