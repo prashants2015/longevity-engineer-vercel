@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  label: string;
+  canonicalPath: string;
+}
+
+const { title, description, label, canonicalPath } = Astro.props;
+---
+
+<Base {title} {description} {canonicalPath}>
+  <section class="page">
+    <div class="container">
+      <p class="label">{label}</p>
+      <h1 class="h2">{title}</h1>
+      <article class="legal-copy"><slot /></article>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .legal-copy {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    max-width: 80ch;
+    color: var(--text-2);
+  }
+  .legal-copy h2,
+  .legal-copy h3 {
+    color: var(--text);
+    font-family: var(--font-head);
+    font-weight: 700;
+    line-height: 1.1;
+    scroll-margin-top: 16px;
+  }
+  .legal-copy h2 { margin-top: 16px; font-size: clamp(28px, 5vw, 40px); }
+  .legal-copy h3 { margin-top: 8px; font-size: 24px; }
+  .legal-copy p { max-width: none; }
+  .legal-copy ul,
+  .legal-copy ol { margin: 0; padding-left: 1.5rem; }
+  .legal-copy li + li { margin-top: 8px; }
+  .legal-copy table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+  }
+  .legal-copy th,
+  .legal-copy td {
+    min-width: 150px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+  .legal-copy th { color: var(--text); }
+</style>
